@@ -1,0 +1,13 @@
+<div class='container'>
+
+<form name="loginform" action='/' method="POST">
+{% csrf_token %}
+	<label>YOUR ADDRESS:</label>
+	<input type="text" name="user_id">
+	<label>token:</label>
+	<input type="text" name="token_id">
+	<input type="submit" value="登入">
+	<input type="reset" value="重填">
+</form>
+
+</div>
