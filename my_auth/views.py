@@ -9,8 +9,8 @@ def index(req):
 def hello(req):
     return render(req, 'hello.html')
 
-
 def login(req):
+    print("test")
     if req.method == 'POST':
         user_id = req.POST['user_id']
         print (user_id)
