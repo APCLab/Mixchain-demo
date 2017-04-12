@@ -23,4 +23,4 @@ class Tokens(models.Model):
     token = models.CharField(max_length = 32, default = randstr)
     
     def __str__(self):
-        return '%s %s' % (self.user,self.token)
+        return '%s %s %s %s %s' % (self.user,self.token,self.chain,self.read,self.write)

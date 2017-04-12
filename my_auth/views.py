@@ -17,9 +17,9 @@ def login(req):
         token_id = req.POST['token_id']
         print (token_id)
         tar_user = Tokens.objects.get(user=user_id,token=token_id)
-        return render(req, 'hello.html')
+        return render(req, 'hello.html',{'token_id':token_id})
     else:
-        print("INNNNNNNNNNNNNNNNDER")
+        print("GET")
         return render(req, 'login.html')
 
 
