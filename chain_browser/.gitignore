@@ -1,0 +1,8 @@
+*.py[co]
+build.js
+node_modules
+
+share/bitcoin/*
+!share/bitcoin/bitcoin.conf.sample
+!share/bitcoin/Makefile
+!share/bitcoin/mine.sh

@@ -1,0 +1,2 @@
+python-bitcoinlib==0.7.0
+git+https://github.com/syrusakbary/pyjade.git@d8cf1d9
