@@ -1,0 +1,6 @@
+Django==1.11
+pkg-resources==0.0.0
+pyjade==4.0.0
+python-bitcoinlib==0.7.0
+pytz==2017.2
+six==1.10.0

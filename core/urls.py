@@ -19,4 +19,5 @@ from django.contrib import admin
 urlpatterns = [
     url(r'^admin/', admin.site.urls),
     url(r'^', include('my_auth.urls')),
+    url(r'^browser/', include('chain_browser.urls', namespace='browser')),
 ]
