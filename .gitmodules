@@ -1,3 +1,0 @@
-[submodule "op_return"]
-	path = op_return
-	url = git@github.com:coinspark/python-OP_RETURN.git
