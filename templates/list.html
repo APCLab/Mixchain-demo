@@ -1,0 +1,28 @@
+<html>
+<head>
+<meta charset='utf-8'>
+<title>競標列表</title>
+</head>
+<body>
+<h2>競標列表</h2>
+<hr>
+<table>
+    <tr><td>編號/</td><td>txid</td></tr>
+{% for b in bid %}
+    <tr>
+        <td>{{b.number}}</td>
+        <td>
+           <a href="/browser/#/detail/tx/{{b.txid}}">{{b.txid}}</a>
+        </td>
+        <td>
+           <a href="/biding/{{b.number}}">競標</a>
+        </td>
+        <td>
+           <a href="/listing/{{b.number}}">列表</a>
+        </td>
+    </tr>
+{% endfor %}
+</table>
+</body>
+</html>
+
