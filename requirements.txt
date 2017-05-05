@@ -1,6 +1,8 @@
 Django==1.11
 pkg-resources==0.0.0
+pyelliptic==1.5.7
 pyjade==4.0.0
 python-bitcoinlib==0.7.0
 pytz==2017.2
+simplejson==3.10.0
 six==1.10.0

@@ -1,4 +1,16 @@
-hello
-{% if token_id %}
-your token is {{ token_id }}
+
+hello 0424<br>
+{% if tar_user %}
+your token is {{ tar_user.token }}<br>
+you are in chain:{{tar_user.chain}}<br> 
+you can read:{{tar_user.read}} <br>
+you can write:{{tar_user.write}}<br>
 {% endif %}
+
+<form name="message" action="send" method="POST">
+{% csrf_token %}
+    <label>message:</label>
+    <input type="text" name="OP_message">
+    <input type="submit" value="送出">
+    <input type="reset" value="重填">
+</form>

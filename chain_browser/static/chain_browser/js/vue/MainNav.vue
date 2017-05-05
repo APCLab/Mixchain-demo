@@ -1,7 +1,7 @@
 <template lang="pug">
   .ui.top.huge.olive.inverted.attached.menu
     .ui.container
-      .item MIXchain Browser
+      .item Browser
       router-link.item(v-bind:to="{name: 'index'}")
         i.home.icon
         | Home

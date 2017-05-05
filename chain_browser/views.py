@@ -88,6 +88,9 @@ def gettx(request, tx_id):
                 continue
 
             code = asm.split()[-1]
+            print(code)
+            a=json.loads(unhexlify(code).decode())
+            print(a)
             op_returns.append(json.loads(unhexlify(code).decode()))
 
     return JsonResponse({

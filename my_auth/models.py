@@ -24,3 +24,10 @@ class Tokens(models.Model):
     
     def __str__(self):
         return '%s %s %s %s %s' % (self.user,self.token,self.chain,self.read,self.write)
+
+class Bid(models.Model):
+    number = models.CharField(max_length =10)
+    txid = models.CharField(max_length =80, primary_key=True)
+    
+    def __str__(self):
+        return '%s %s' % (self.number,self.txid)

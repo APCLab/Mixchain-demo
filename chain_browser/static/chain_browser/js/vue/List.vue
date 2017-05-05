@@ -1,6 +1,6 @@
 <template lang="pug">
   div
-    h2 MIXchain Recent Blocks
+    h2 Recent Blocks
     table.ui.celled.table
       thead
         tr
