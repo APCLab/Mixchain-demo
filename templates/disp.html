@@ -1,0 +1,29 @@
+{% include 'head.html' %}
+</head>
+<body>
+<h2>競標列表</h2>
+<hr>
+
+{% if chain %}
+your token is {{ token }}<br>
+you are in channel:{{chain}}<br>
+you can read:{{read}} <br>
+you can write:{{write}}<br>
+{% endif %}
+
+<table>
+    <tr><td>編號/</td><td>chain/</td><td>txid</td></tr>
+{% for b in bid %}
+    <tr>
+        <td>{{b.number}}</td>
+        <td>{{b.chain}}</td>
+        <td>
+           <a href="/browser/#/detail/tx/{{b.txid}}">{{b.txid}}</a>
+        </td>
+    </tr>
+{% endfor %}
+</table>
+</body>
+</html>
+
+

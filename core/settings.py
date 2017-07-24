@@ -129,6 +129,7 @@ USE_L10N = True
 
 USE_TZ = True
 
+SESSION_EXPIRE_AT_BROWSER_CLOSE = True
 
 BITCOIN_API = 'http://demo:demo@localhost:8332'
 

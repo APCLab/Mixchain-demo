@@ -1,11 +1,14 @@
 
-hello 0424<br>
-{% if tar_user %}
-your token is {{ tar_user.token }}<br>
-you are in chain:{{tar_user.chain}}<br> 
-you can read:{{tar_user.read}} <br>
-you can write:{{tar_user.write}}<br>
+hello <br>
+{% if chain %}
+your token is {{ token }}<br>
+you are in chain:{{chain}}<br> 
+you can read:{{read}} <br>
+you can write:{{write}}<br>
 {% endif %}
+
+<a href="/list" >競標列表</a>
+
 
 <form name="message" action="send" method="POST">
 {% csrf_token %}

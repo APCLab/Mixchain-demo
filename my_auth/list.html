@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset='utf-8'>
+<title>競標列表</title>
+<!-- Latest compiled and minified CSS -->
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+
+<!-- Optional theme -->
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css" integrity="sha384-rHyoN1iRsVXV4nD0JutlnGaslCJuC7uwjduW9SVrLvRYooPp2bWYgmgJQIXwl/Sp" crossorigin="anonymous">
+
+<!-- Latest compiled and minified JavaScript -->
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+</head>
+<body>
+
+
+
+
+<div class="container">
+  <div class="col-md-2"></div>
+  <div class="col-md-8">
+
+      <h2>競標列表1</h2>
+ 
+    <hr>
+    {% if chain %}
+    <ul class="list">
+      <li id="pancakes">Your ID is: {{ uid }}</li>
+      <li id="donuts">Donuts</li>
+      <li id="cupcakes">Cupcakes</li>
+      <li id="icecream">Icecream</li>
+      <li id="cookies">Cookies</li>
+      <li id="chocolate">Chocolate</li>
+    </ul>
+
+    {% endif %}
+    <br>
+      <div class="row">
+    <div class="col-xs-3">
+      <input type="button" value="發起標案" onclick="location.href='/bid'" class="btn btn-primary ">
+    </div>
+    <div class="col-xs-4">
+      
+    </div>
+    <div class="col-xs-5">
+      <form class="form-wrapper" >
+      <input type="text" id="search" placeholder="Search for bid..." required  >
+      <input type="submit" value="go" id="submit" class="btn btn-default">
+      </form>
+    </div>
+  </div>
+    <br>
+    <table class='table table-striped'>
+        <tr><td>編號</td><td align="center">Chain</td><td align="center">Product</td><td></td><td></td></tr>
+    {% for b in bid %}
+        <tr>
+            <td>{{b.number}}</td>
+            <td align="center">{{b.chain}}</td>
+            <td align="center">
+               <a href="/browser/#/detail/tx/{{b.txid}}">{{b.product}}</a>
+            </td>
+            <td align="center">
+               {% if b.exp_time > exp  %}
+                <a href="/bidding/{{b.number}}">競標中</a>
+               {% else %}
+                <a href="/settlement/{{b.number}}">已結標</a>
+               {% endif %}
+
+            </td>
+            <td>
+               <a href="/listing/{{b.number}}">列表</a>
+            </td>
+        </tr>
+    {% endfor %}
+    </table>
+  </div>
+
+  <div class="col-md-2"></div>
+
+</div>
+</body>
+</html>

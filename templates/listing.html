@@ -1,0 +1,84 @@
+
+{% include 'head.html' %}
+<body>
+<div class="container-fluid">
+  <div class="col-md-2"></div>
+  <div class="col-md-8">
+  {% load staticfiles %}
+      
+
+
+    <div class="row">
+        <div class="col-xs-4">
+        <br><br>
+        <a href="/list"><img src="{% static "/logo.png" %}"></a>
+        <h2>價格列表</h2>
+        </div>
+        <div class="col-xs-4"></div>
+        
+        <div class="col-xs-4">
+        <br><br>
+        <ul >
+
+  		{% if chain %}
+        <li class="li-s1">ID is: {{ uid }} </li>
+        <li class="li-s1">In channel:{{chain}}</li>
+        <li class="li-s1">Can read:{{read}}</li>
+        <li class="li-s1">Can write:{{write}}</li>
+        <br>
+        <button type="button" class="btn btn-default" onclick="location.href='/logout'">登出</button>
+        </ul>
+        {% endif %}
+        </div>
+    </div>
+
+   
+	<div class="col-md-2"></div>
+    <hr>  
+        
+    <br>
+	{% if view %}
+
+
+ <div class="row">
+  <div class="col-md-2"></div>
+  <div class="col-md-8">
+	<table class='table table-striped'>
+	    <tr><td align="center">編號 </td><td align="center">TXID</td></tr>
+	{% endif  %}
+	{% for a in view %}
+	    <tr>
+	        <td align="center">{{ forloop.counter }}</td>
+	        <td align="center"> 
+	           <a href="/browser/#/detail/tx/{{a.list_id}}" >{{a.list_id}}</a>
+	        </td>
+	    </tr>
+	{% empty %}
+	    <div class='alert alert-warning'><h2>目前無人競標</h2></div>
+	{% endfor %}
+	{% if view %}
+	</table>
+	{% endif  %}
+
+
+  </div>
+  <div class="col-md-2"></div>
+  </div>
+
+	</div>
+
+  <div class="col-md-2"></div>
+
+</div>
+</body>
+</html>
+
+<style >
+li {
+  list-style: none;
+  border-left: 3px solid #f00;
+  margin-top: 3px;
+  margin-bottom: 6px;
+  padding-left: 8px;
+}
+</style>

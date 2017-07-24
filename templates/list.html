@@ -1,28 +1,95 @@
-<html>
-<head>
-<meta charset='utf-8'>
-<title>競標列表</title>
-</head>
+
+{% include 'head.html' %}
 <body>
-<h2>競標列表</h2>
-<hr>
-<table>
-    <tr><td>編號/</td><td>txid</td></tr>
-{% for b in bid %}
-    <tr>
-        <td>{{b.number}}</td>
-        <td>
-           <a href="/browser/#/detail/tx/{{b.txid}}">{{b.txid}}</a>
-        </td>
-        <td>
-           <a href="/biding/{{b.number}}">競標</a>
-        </td>
-        <td>
-           <a href="/listing/{{b.number}}">列表</a>
-        </td>
-    </tr>
-{% endfor %}
-</table>
+
+
+<div class="container-fluid">
+  <div class="col-md-2"></div>
+  <div class="col-md-8">
+  {% load staticfiles %}
+      
+  {% if chain %}    
+
+
+    <div class="row">
+        <div class="col-xs-4">
+        <br><br>
+        <img src="{% static "/logo.png" %}">
+        <h2>競標列表</h2>
+        </div>
+        <div class="col-xs-4"></div>
+        
+        <div class="col-xs-4">
+        <br><br>
+        <ul >
+        <li class="li-s1">ID is: {{ uid }} </li>
+        <li class="li-s1">In channel:{{chain}}</li>
+        <li class="li-s1">Can read:{{read}}</li>
+        <li class="li-s1">Can write:{{write}}</li>
+        <br>
+        <button type="button" class="btn btn-default"  onclick="location.href='/logout'">登出</button>
+        </ul>
+        </div>
+
+
+    </div>
+
+
+    <hr>  
+    {% endif %}    
+    <br>
+      <div class="row">
+    <div class="col-xs-3">
+      <input type="button" value="發起標案" onclick="location.href='/bid'" class="btn btn-primary ">
+    </div>
+    <div class="col-xs-4">
+      
+    </div>
+    <div class="col-xs-5">
+      <form class="form-wrapper" >
+      <input type="text" id="search" placeholder="Search for bid..." required  >
+      <input type="submit" value="go" id="submit" class="btn btn-default">
+      </form>
+    </div>
+  </div>
+    <br>
+    <table class='table table-striped'>
+        <tr><td>編號</td><td align="center">Channel</td><td align="center">Product</td><td></td><td></td></tr>
+    {% for b in bid %}
+        <tr>
+            <td>{{b.number}}</td>
+            <td align="center">{{b.chain}}</td>
+            <td align="center">
+               <a href="/browser/#/detail/tx/{{b.txid}}">{{b.product}}</a>
+            </td>
+            <td align="center">
+               {% if b.exp_time > exp  %}
+                <a href="/bidding/{{b.number}}" class="btn btn-primary ">競標中</a>
+               {% else %}
+                <a href="/settlement/{{b.number}}" class="btn btn-danger ">已結標</a>
+               {% endif %}
+
+            </td>
+            <td>
+               <a href="/listing/{{b.number}}" class="btn btn-success">列表</a>
+            </td>
+        </tr>
+    {% endfor %}
+    </table>
+  </div>
+
+  <div class="col-md-2"></div>
+
+</div>
 </body>
 </html>
 
+<style >
+li {
+  list-style: none;
+  border-left: 3px solid #f00;
+  margin-top: 3px;
+  margin-bottom: 6px;
+  padding-left: 8px;
+}
+</style>

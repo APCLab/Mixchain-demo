@@ -1,0 +1,74 @@
+{% include 'head.html' %}
+<body>
+<div class="container-fluid">
+  <div class="col-md-2"></div>
+  <div class="col-md-8">
+  {% load staticfiles %}
+      
+
+
+    <div class="row">
+        <div class="col-xs-4">
+        <br><br>
+        <a href="/list"><img src="{% static "/logo.png" %}"></a>
+        <h2>結標列表</h2>
+        </div>
+        <div class="col-xs-4"></div>
+        
+        <div class="col-xs-4">
+        <br><br>
+        <ul >
+
+  		{% if chain %}
+        <li class="li-s1">ID is: {{ uid }} </li>
+        <li class="li-s1">In channel:{{chain}}</li>
+        <li class="li-s1">Can read:{{read}}</li>
+        <li class="li-s1">Can write:{{write}}</li>
+        <br>
+        <button type="button" class="btn btn-default" onclick="location.href='/logout'">登出</button>
+        </ul>
+        {% endif %}
+        </div>
+    </div>
+
+   
+	<div class="col-md-2"></div>
+    <hr>  
+        
+    <br>
+{% if price > r_price %}
+<div class='alert alert-success'>
+<h2>得標金額:${{price}}</h2>
+底標:${{r_price}}<br>
+得標id:<a href="/browser/#/detail/tx/{{txid}}">{{txid}}</a>
+
+</div>
+<a href="/listing/{{number}}">競標列表</a>
+{% elif message %}
+<div class='alert alert-warning'><h2>{{message}}</h2></div>
+{% else %}
+<div class='alert alert-danger'>
+<h2>流標!!</h2><br>
+底標:${{r_price}}<br>
+最高金額:${{price}}<br>
+txid:<a href="/browser/#/detail/tx/{{txid}}">{{txid}}</a><br>
+</div>
+<a href="/listing/{{number}}">競標列表</a>
+{% endif %}
+
+</div>
+</div>
+
+</body>
+
+</html>
+
+<style >
+li {
+  list-style: none;
+  border-left: 3px solid #f00;
+  margin-top: 3px;
+  margin-bottom: 6px;
+  padding-left: 8px;
+}
+</style>
