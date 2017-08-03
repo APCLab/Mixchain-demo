@@ -7,25 +7,36 @@ import string
 def randstr():
     return ''.join([random.choice(string.digits) for _ in range(16)])
 
+
 class User(models.Model):
+    '''
+    unused
+    '''
     address = models.CharField(max_length=64, primary_key=True)
     pub_key = models.CharField(max_length=256)
     def __str__(self):
         return '%s %s' % (self.address,self.pub_key)
-    
+
+
 class Tokens(models.Model):
+    '''
+    unused
+    '''
     user = models.ForeignKey(User)
     chain = models.SmallIntegerField()
-    
+
     read = models.NullBooleanField()
     write = models.NullBooleanField()
-    
+
     token = models.CharField(max_length = 32, default = randstr)
-    
+
     def __str__(self):
         return '%s %s %s %s %s' % (self.user,self.token,self.chain,self.read,self.write)
 
 class Bid(models.Model):
+    '''
+    表案 metadata
+    '''
     chain = models.CharField(max_length =10,default=None,blank=True,null=True)
     number = models.CharField(max_length =10)
     txid = models.CharField(max_length =80, primary_key=True)
@@ -38,7 +49,11 @@ class Bid(models.Model):
     def __str__(self):
         return '%s %s %s %s %s %s %s %s' % (self.number,self.txid,self.chain,self.pub_key1,self.pri_key1,self.pub_key2,self.pri_key2,self.exp_time)
 
+
 class list_Bid(models.Model):
+    '''
+    投標的標單
+    '''
     list_id = models.CharField(max_length =80, primary_key=True)
     number = models.CharField(max_length =10)
     price = models.CharField(max_length =10)
